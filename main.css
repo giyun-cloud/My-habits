@@ -73,8 +73,9 @@ header .logo {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  -webkit-transition: 1s;
-  transition: 1s;
+  -webkit-transition: .5s;
+  transition: .5s;
+  cursor: pointer;
 }
 
 header ul {
@@ -92,8 +93,8 @@ header ul {
   -ms-flex-pack: distribute;
       justify-content: space-around;
   overflow: hidden;
-  -webkit-transition: 1s;
-  transition: 1s;
+  -webkit-transition: .5s;
+  transition: .5s;
   z-index: 3;
 }
 
@@ -109,7 +110,7 @@ header .group {
   margin: 0 auto;
 }
 
-header .group:hover .logo {
+header .group.show .logo {
   border: 2px solid transparent;
   border-bottom: none;
   -webkit-box-sizing: border-box;
@@ -118,7 +119,7 @@ header .group:hover .logo {
   border-radius: 20px 20px 0 0;
 }
 
-header .group:hover ul {
+header .group.show ul {
   height: 40px;
 }
 
@@ -228,7 +229,7 @@ header .group:hover ul {
 
 section.habit {
   display: block;
-  height: 0;
+  height: calc(100vh - 3.5rem - 5px);
   overflow: hidden;
   position: absolute;
   top: calc(3.5rem + 5px);
@@ -266,6 +267,7 @@ section.habit h3 {
 section.habit p {
   line-height: 1.5;
   margin-top: 20px;
+  word-break: keep-all;
 }
 
 section.habit sub {
@@ -315,6 +317,7 @@ footer.show .inner {
 
 footer .description {
   line-height: 1.4;
+  word-break: keep-all;
 }
 
 footer .me {

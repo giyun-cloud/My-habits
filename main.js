@@ -17,21 +17,33 @@ new ScrollMagic
   .setClassToggle(mainEl,'show')
   .addTo(new ScrollMagic.Controller);
 
+const logoEl = document.querySelector('header .logo')
+const menugroupEl = document.querySelector('header .group')
+
+logoEl.addEventListener('click', () =>
+{
+  menugroupEl.classList.toggle('show')
+})
+
+
+//Home click - close habit
 const homeEl = document.querySelector('.home')
 const habitEl = document.querySelector('.habit')
-const menusEls = document.querySelectorAll('header .menus')
-const habitH3El = document.querySelector('.habit h3')
-const habitPEl = document.querySelector('.habit p')
-
 
 homeEl.addEventListener('click', () =>
 {
   habitEl.classList.remove('showhabit')
 })
 
+//menu-click open habit
+const menusEls = document.querySelectorAll('header .menus')
+const habitH3El = document.querySelector('.habit h3')
+const habitPEl = document.querySelector('.habit p')
+
 menusEls.forEach(function(menusEl,index){
   menusEl.addEventListener('click', () => {
     habitEl.classList.add('showhabit')
+    menugroupEl.classList.remove('show')
     if(index === 0) {
       habitH3El.innerHTML = "운동"
       habitPEl.innerHTML = habitP1
