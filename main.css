@@ -24,36 +24,6 @@ header {
   padding-top: 0.5rem;
 }
 
-header .natural-border {
-  width: 100%;
-  height: 5px;
-  position: absolute;
-  top: 3.5rem;
-  left: 0;
-  z-index: 1;
-  overflow: hidden;
-  -webkit-animation-name: headerbefore;
-          animation-name: headerbefore;
-  -webkit-animation-duration: 6s;
-          animation-duration: 6s;
-  -webkit-animation-iteration-count: infinite;
-          animation-iteration-count: infinite;
-  -webkit-animation-direction: alternate;
-          animation-direction: alternate;
-}
-
-header .natural-border::before {
-  content: '';
-  display: block;
-  position: absolute;
-  left: 0;
-  width: 100%;
-  top: 0;
-  height: 10px;
-  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#666));
-  background: linear-gradient(#000, #666);
-}
-
 header .logo {
   font-size: 1.5rem;
   font-weight: 700;
@@ -78,6 +48,10 @@ header .logo {
   cursor: pointer;
 }
 
+header .logo:hover {
+  font-size: 1.6rem;
+}
+
 header ul {
   width: 100%;
   height: 0;
@@ -95,12 +69,16 @@ header ul {
   overflow: hidden;
   -webkit-transition: .5s;
   transition: .5s;
-  z-index: 3;
+  z-index: 4;
 }
 
 header ul li a {
   display: block;
   padding: 10px;
+}
+
+header ul li a:hover {
+  font-weight: 900;
 }
 
 header .group {
@@ -128,6 +106,7 @@ header .group.show ul {
   font-weight: 900;
   color: #fff;
   height: calc(100vh - 3.5rem);
+  min-height: 500px;
   text-shadow: 0 1px 2px #000;
   background-color: #333;
   position: relative;
@@ -140,6 +119,9 @@ header .group.show ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  z-index: 1;
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
   -webkit-animation-name: habits;
           animation-name: habits;
   -webkit-animation-duration: 6s;
@@ -148,25 +130,45 @@ header .group.show ul {
           animation-iteration-count: infinite;
   -webkit-animation-direction: alternate;
           animation-direction: alternate;
+  -webkit-transition: 1s;
+  transition: 1s;
+  -webkit-transform-origin: 0 50%;
+          transform-origin: 0 50%;
 }
 
-.main::before {
+.main.bookeffect {
+  -webkit-transform: perspective(3000px) rotateY(-180deg);
+          transform: perspective(3000px) rotateY(-180deg);
+}
+
+.main .natural-border {
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  overflow: hidden;
+  -webkit-animation-name: headerbefore;
+          animation-name: headerbefore;
+  -webkit-animation-duration: 6s;
+          animation-duration: 6s;
+  -webkit-animation-iteration-count: infinite;
+          animation-iteration-count: infinite;
+  -webkit-animation-direction: alternate;
+          animation-direction: alternate;
+}
+
+.main .natural-border::before {
   content: '';
   display: block;
   position: absolute;
   left: 0;
   width: 100%;
-  height: 0%;
-  background-color: #000;
-  border-top: 1px solid #fff;
-  bottom: 0;
-  -webkit-transition: 1s;
-  transition: 1s;
-  z-index: 2;
-}
-
-.main.show::before {
-  height: 100%;
+  top: 0;
+  height: 10px;
+  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#666));
+  background: linear-gradient(#000, #666);
 }
 
 @-webkit-keyframes habits {
@@ -205,7 +207,7 @@ header .group.show ul {
 
 @-webkit-keyframes headerbefore {
   25% {
-    height: 4px;
+    height: 5px;
   }
   75% {
     height: 10px;
@@ -217,7 +219,7 @@ header .group.show ul {
 
 @keyframes headerbefore {
   25% {
-    height: 4px;
+    height: 5px;
   }
   75% {
     height: 10px;
@@ -228,32 +230,41 @@ header .group.show ul {
 }
 
 section.habit {
-  display: block;
-  height: 0;
-  overflow: hidden;
+  height: calc(100vh - 3.5rem - 5px);
+  min-height: 495px;
   position: absolute;
   top: calc(3.5rem + 5px);
   width: 100%;
   left: 0;
+  z-index: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  z-index: 1;
   background-color: #333;
-  -webkit-transition: 1s;
-  transition: 1s;
+  -webkit-transition: z-index 0s .5s;
+  transition: z-index 0s .5s;
 }
 
 section.habit.showhabit {
-  height: calc(100vh - 3.5rem - 5px);
+  z-index: 2;
+}
+
+section.habit .natural-border {
+  width: 100%;
+  height: 5px;
+  position: absolute;
+  top: -5px;
+  left: 0;
+  background: -webkit-gradient(linear, left top, left bottom, from(#000), to(#333));
+  background: linear-gradient(#000, #333);
 }
 
 section.habit .inner {
   padding: 2rem;
-  border: double #888;
+  border: 2px solid #fff;
   border-radius: 1rem;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -266,7 +277,7 @@ section.habit h3 {
 
 section.habit p {
   line-height: 1.5;
-  margin-top: 20px;
+  margin-top: 1rem;
   word-break: keep-all;
 }
 
@@ -305,6 +316,24 @@ footer {
   z-index: 2;
 }
 
+footer::before {
+  content: '';
+  display: block;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 100%;
+  height: 0;
+  background-color: #000;
+  border-top: 1px solid #fff;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+footer.show::before {
+  height: 100vh;
+}
+
 footer .inner {
   -webkit-transition: 1s;
   transition: 1s;
@@ -321,7 +350,7 @@ footer .description {
 }
 
 footer .me {
-  margin-top: 20px;
+  margin-top: 1rem;
 }
 
 footer .me a {
@@ -337,11 +366,23 @@ footer .me a:hover {
   html {
     font-size: 15px;
   }
+  .main {
+    min-height: 600px;
+  }
+  section.habit {
+    min-height: 595px;
+  }
 }
 
 @media (max-width: 1024px) {
   html {
     font-size: 14px;
+  }
+  .main {
+    min-height: 600px;
+  }
+  section.habit {
+    min-height: 595px;
   }
 }
 
@@ -349,11 +390,23 @@ footer .me a:hover {
   html {
     font-size: 13px;
   }
+  .main {
+    min-height: 600px;
+  }
+  section.habit {
+    min-height: 595px;
+  }
 }
 
 @media (max-width: 480px) {
   html {
     font-size: 12px;
+  }
+  .main {
+    min-height: 600px;
+  }
+  section.habit {
+    min-height: 595px;
   }
 }
 /*# sourceMappingURL=main.css.map */
