@@ -36,33 +36,38 @@ const menusEls = document.querySelectorAll('header .menus')
 const habitH3El = document.querySelector('.habit h3')
 const habitPEl = document.querySelector('.habit p')
 
+function habitIndex(index) {
+  if(index === 0) {
+    habitH3El.innerHTML = "운동"
+    habitPEl.innerHTML = habitP1
+  }
+  else if(index === 1) {
+    habitH3El.innerHTML = "영양제 섭취"
+    habitPEl.innerHTML = habitP2
+  }
+  else if(index === 2) {
+    habitH3El.innerHTML = "공부"
+    habitPEl.innerHTML = habitP3
+  }
+  else if(index === 3) {
+    habitH3El.innerHTML = "기상"
+    habitPEl.innerHTML = habitP2
+  }
+  else if(index === 4) {
+    habitH3El.innerHTML = "독서 및 명상"
+    habitPEl.innerHTML = habitP2
+  }
+}
+
 menusEls.forEach(function(menusEl,index){
   menusEl.addEventListener('click', () => {
+    habitIndex(index);
     habitEl.classList.add('showhabit')
     mainEl.classList.add('bookeffect')
+    habitEl.classList.toggle('color')
     habitEl.style.zIndex = null
     habitEl.style.transition = null
     menugroupEl.classList.remove('show')
-    if(index === 0) {
-      habitH3El.innerHTML = "운동"
-      habitPEl.innerHTML = habitP1
-    }
-    else if(index === 1) {
-      habitH3El.innerHTML = "영양제 섭취"
-      habitPEl.innerHTML = habitP2
-    }
-    else if(index === 2) {
-      habitH3El.innerHTML = "공부"
-      habitPEl.innerHTML = habitP3
-    }
-    else if(index === 3) {
-      habitH3El.innerHTML = "기상"
-      habitPEl.innerHTML = habitP2
-    }
-    else if(index === 4) {
-      habitH3El.innerHTML = "독서 및 명상"
-      habitPEl.innerHTML = habitP2
-    }
   })
 });
 

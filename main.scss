@@ -111,12 +111,14 @@ header {
   justify-content: center;
   align-items: center;
   z-index: 1;
-  backface-visibility: hidden;
   @include animation(habits);
   transition: 1s;
   transform-origin: 0 50%;
+  opacity: 1;
+
   &.bookeffect {
-    transform: perspective(3000px) rotateY(-180deg);
+    transform: perspective(5000px) rotateY(-180deg);
+    opacity: 0.95;
   }
 
   //자연스러온 경계선
@@ -178,10 +180,16 @@ section.habit {
   display: flex;
   align-items: center;
   background-color: #333;
-  transition: z-index 0s .5s;
+  transition: z-index 0s .5s, background-color 1s;
 
   &.showhabit {
     z-index: 2;
+  }
+  &.color {
+    background-color: #222;
+    input[type='button'].home {
+      background-color: #222;
+    }
   }
   .natural-border {
     width: 100%;

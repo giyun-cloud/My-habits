@@ -120,8 +120,6 @@ header .group.show ul {
       -ms-flex-align: center;
           align-items: center;
   z-index: 1;
-  -webkit-backface-visibility: hidden;
-          backface-visibility: hidden;
   -webkit-animation-name: habits;
           animation-name: habits;
   -webkit-animation-duration: 6s;
@@ -134,11 +132,13 @@ header .group.show ul {
   transition: 1s;
   -webkit-transform-origin: 0 50%;
           transform-origin: 0 50%;
+  opacity: 1;
 }
 
 .main.bookeffect {
-  -webkit-transform: perspective(3000px) rotateY(-180deg);
-          transform: perspective(3000px) rotateY(-180deg);
+  -webkit-transform: perspective(5000px) rotateY(-180deg);
+          transform: perspective(5000px) rotateY(-180deg);
+  opacity: 0.95;
 }
 
 .main .natural-border {
@@ -244,12 +244,20 @@ section.habit {
       -ms-flex-align: center;
           align-items: center;
   background-color: #333;
-  -webkit-transition: z-index 0s .5s;
-  transition: z-index 0s .5s;
+  -webkit-transition: z-index 0s .5s, background-color 1s;
+  transition: z-index 0s .5s, background-color 1s;
 }
 
 section.habit.showhabit {
   z-index: 2;
+}
+
+section.habit.color {
+  background-color: #222;
+}
+
+section.habit.color input[type='button'].home {
+  background-color: #222;
 }
 
 section.habit .natural-border {
