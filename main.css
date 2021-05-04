@@ -243,7 +243,7 @@ header .group.show ul {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: #444;
+  background-color: #333;
   -webkit-transition: 1s;
   transition: 1s;
   -webkit-transform-origin: 0 50%;
@@ -251,18 +251,10 @@ header .group.show ul {
   opacity: 1;
 }
 
-.habit:last-child.showhabit {
+.habit:last-child.bookhabit {
   -webkit-transform: perspective(5000px) rotateY(-180deg);
           transform: perspective(5000px) rotateY(-180deg);
   opacity: 0.95;
-}
-
-.habit.color {
-  background-color: #222;
-}
-
-.habit.color input[type='button'].home {
-  background-color: #222;
 }
 
 .habit .natural-border {

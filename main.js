@@ -21,15 +21,15 @@ logoEl.addEventListener('click', () =>
 const homeEl = document.querySelectorAll('.home')
 const habitEl = document.querySelectorAll('.habit')
 const mainEl = document.querySelector('section.main')
-let habitbookTF = false
 
 for (let i = 0; i < homeEl.length; i++) {
-    homeEl[i].addEventListener('click', () =>
+  homeEl[i].addEventListener('click', () =>
   {
-    habitEl[0].classList.remove('showhabit')
-    habitEl[1].classList.remove('showhabit')
+    habitEl[0].classList.remove('bookhabit')
+    habitEl[1].classList.remove('bookhabit')
     mainEl.classList.remove('bookeffect')
-    habitbookTF = false
+    habitEl[1].classList.remove('bookhabit')
+    toggleTF = false
   })  
 }
 
@@ -71,12 +71,10 @@ function habitIf(index) {
 menusEls.forEach(function(menusEl,index){
   menusEl.addEventListener('click', () => {
     habitIf(index);
-    habitEl[1].classList.toggle('showhabit')
+    habitEl[1].classList.toggle('bookhabit')
     toggleTF = !toggleTF
-
     mainEl.classList.add('bookeffect')
     menugroupEl.classList.remove('show')
-    habitbookTF = true
   })
 });
 
